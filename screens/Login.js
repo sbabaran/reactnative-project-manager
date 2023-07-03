@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import Logo from "../components/Logo";
+import Logo from "../components/modules/Logo";
+import TextField from "../components/modules/TextField";
 
 export default function Login() {
     const ADMIN_EMAIL = 'admin@test.com';
@@ -13,7 +14,7 @@ export default function Login() {
 
     const handleLogin = async () => {
         // Add validation for email and password
-        console.log(`Logging in with email: ${email} and password: ${password}`);
+        // console.log(`Logging in with email: ${email} and password: ${password}`);
         if (email === ADMIN_EMAIL && password === ADMIN_PSWD) {
             try {
                 await AsyncStorage.setItem('user', JSON.stringify({ email, password }));
@@ -30,14 +31,7 @@ export default function Login() {
         <View style={styles.container}>
             <Logo withName="false"/>
             <Text style={styles.title}>Login to continue</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setEmail}
-                value={email}
-                placeholder="Email"
-                keyboardType="email-address"
-                autoCapitalize="none"
-            />
+            <TextField props={{ placeholder: 'Email Address', keyboardType: 'email-address', input: {email} } }/>
             <TextInput
                 style={styles.input}
                 onChangeText={setPassword}

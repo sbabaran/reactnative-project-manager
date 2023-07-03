@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
-import Logo from '../components/Logo';
+import Logo from '../components/modules/Logo';
 //import * as SQLite from 'expo-sqlite';
 
 //const db = SQLite.openDatabase('UserDatabase.db');
